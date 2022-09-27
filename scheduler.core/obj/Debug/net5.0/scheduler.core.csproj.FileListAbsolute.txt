@@ -1,0 +1,15 @@
+C:\Users\claud\source\repos\scheduler\scheduler.core\bin\Debug\net5.0\scheduler.core.deps.json
+C:\Users\claud\source\repos\scheduler\scheduler.core\bin\Debug\net5.0\scheduler.core.dll
+C:\Users\claud\source\repos\scheduler\scheduler.core\bin\Debug\net5.0\scheduler.core.pdb
+C:\Users\claud\source\repos\scheduler\scheduler.core\obj\Debug\net5.0\scheduler.core.csproj.AssemblyReference.cache
+C:\Users\claud\source\repos\scheduler\scheduler.core\obj\Debug\net5.0\scheduler.core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\claud\source\repos\scheduler\scheduler.core\obj\Debug\net5.0\scheduler.core.AssemblyInfoInputs.cache
+C:\Users\claud\source\repos\scheduler\scheduler.core\obj\Debug\net5.0\scheduler.core.AssemblyInfo.cs
+C:\Users\claud\source\repos\scheduler\scheduler.core\obj\Debug\net5.0\scheduler.core.csproj.CoreCompileInputs.cache
+C:\Users\claud\source\repos\scheduler\scheduler.core\obj\Debug\net5.0\scheduler.core.dll
+C:\Users\claud\source\repos\scheduler\scheduler.core\obj\Debug\net5.0\refint\scheduler.core.dll
+C:\Users\claud\source\repos\scheduler\scheduler.core\obj\Debug\net5.0\scheduler.core.pdb
+C:\Users\claud\source\repos\scheduler\scheduler.core\obj\Debug\net5.0\ref\scheduler.core.dll
+C:\Users\claud\source\repos\scheduler\scheduler.core\bin\Debug\net5.0\scheduler.core.runtimeconfig.json
+C:\Users\claud\source\repos\scheduler\scheduler.core\bin\Debug\net5.0\scheduler.core.runtimeconfig.dev.json
+C:\Users\claud\source\repos\scheduler\scheduler.core\obj\Debug\net5.0\scheduler.core.genruntimeconfig.cache
