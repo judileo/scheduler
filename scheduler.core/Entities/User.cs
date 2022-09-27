@@ -2,7 +2,7 @@
 
 namespace scheduler.core.Entities
 {
-    public class User
+    public sealed class User
     {
         public Guid Id { get; set; }
         public string FirstName { get; set; }

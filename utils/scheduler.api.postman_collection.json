@@ -1,0 +1,474 @@
+{
+	"info": {
+		"_postman_id": "a27d632a-cd38-4793-8fae-169dbdbe530a",
+		"name": "scheduler.api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7932023"
+	},
+	"item": [
+		{
+			"name": "Event",
+			"item": [
+				{
+					"name": "/api/Event",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/Event",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/Event",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/Event/:eventId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Event",
+								":eventId"
+							],
+							"variable": [
+								{
+									"key": "eventId",
+									"value": "04d105ab-5e30-4d44-ae41-47a45392657d"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/Event",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"day\": 5,\n  \"begin\": \"voluptate incididunt\",\n  \"end\": \"cupidatat ad dolor\",\n  \"maxCapacity\": -70882135,\n  \"instructorId\": \"urn:uuid:d19d62b2-64d6-506f-b6fa-b4a2f5d28357\",\n  \"description\": \"sed dolore laboris occaecat\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/Event",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Event"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Data",
+			"item": [
+				{
+					"name": "/api/Event-1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"day\": 1,\n  \"begin\": \"18:00\",\n  \"end\": \"20:00\",\n  \"maxCapacity\": 7,\n  \"instructorId\": \"d19d62b2-64d6-506f-b6fa-b4a2f5d28357\",\n  \"description\": \"clase de los lunes turno tarde\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/Event",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/Event-2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"day\": 2,\n  \"begin\": \"09:00\",\n  \"end\": \"11:00\",\n  \"maxCapacity\": 8,\n  \"instructorId\": \"d19d62b2-64d6-506f-b6fa-b4a2f5d28357\",\n  \"description\": \"clase de los martes turno mañana\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/Event",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/Event-3",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"day\": 2,\n  \"begin\": \"18:00\",\n  \"end\": \"20:00\",\n  \"maxCapacity\": 7,\n  \"instructorId\": \"d19d62b2-64d6-506f-b6fa-b4a2f5d28357\",\n  \"description\": \"clase de los martes turno tarde\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/Event",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/Event-4",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"day\": 3,\n  \"begin\": \"09:00\",\n  \"end\": \"11:00\",\n  \"maxCapacity\": 7,\n  \"instructorId\": \"d19d62b2-64d6-506f-b6fa-b4a2f5d28357\",\n  \"description\": \"clase de los miércoles turno mañana\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/Event",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/Event-5",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"day\": 3,\n  \"begin\": \"14:00\",\n  \"end\": \"16:00\",\n  \"maxCapacity\": 7,\n  \"instructorId\": \"d19d62b2-64d6-506f-b6fa-b4a2f5d28357\",\n  \"description\": \"clase de los miércoles turno mediodía\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/Event",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/Event-6",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"day\": 4,\n  \"begin\": \"11:00\",\n  \"end\": \"13:00\",\n  \"maxCapacity\": 7,\n  \"instructorId\": \"d19d62b2-64d6-506f-b6fa-b4a2f5d28357\",\n  \"description\": \"clase de los jueves turno mediodía\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/Event",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/Event-7",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"day\": 4,\n  \"begin\": \"14:00\",\n  \"end\": \"16:00\",\n  \"maxCapacity\": 7,\n  \"instructorId\": \"d19d62b2-64d6-506f-b6fa-b4a2f5d28357\",\n  \"description\": \"clase de los jueves turno mediodía\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/Event",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/Event-8",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"day\": 4,\n  \"begin\": \"18:00\",\n  \"end\": \"20:00\",\n  \"maxCapacity\": 7,\n  \"instructorId\": \"d19d62b2-64d6-506f-b6fa-b4a2f5d28357\",\n  \"description\": \"clase de los jueves turno tarde\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/Event",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/Event-9",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"day\": 5,\n  \"begin\": \"15:00\",\n  \"end\": \"17:00\",\n  \"maxCapacity\": 7,\n  \"instructorId\": \"d19d62b2-64d6-506f-b6fa-b4a2f5d28357\",\n  \"description\": \"clase de los viernes turno tarde\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/Event",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/Event-10",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"day\": 5,\n  \"begin\": \"18:00\",\n  \"end\": \"20:00\",\n  \"maxCapacity\": 7,\n  \"instructorId\": \"d19d62b2-64d6-506f-b6fa-b4a2f5d28357\",\n  \"description\": \"clase de los viernes turno tarde\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/Event",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/Event-11",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"day\": 6,\n  \"begin\": \"14:00\",\n  \"end\": \"16:00\",\n  \"maxCapacity\": 5,\n  \"instructorId\": \"d19d62b2-64d6-506f-b6fa-b4a2f5d28357\",\n  \"description\": \"clase de los sábados turno tarde\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/Event",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Event"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://localhost:5001",
+			"type": "string"
+		}
+	]
+}
