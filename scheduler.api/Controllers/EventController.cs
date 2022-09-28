@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using scheduler.core.Dtos.Requests;
 using scheduler.core.Interfaces;
+using Serilog;
+using System;
 
 namespace scheduler.api.Controllers
 {
@@ -9,24 +12,49 @@ namespace scheduler.api.Controllers
     public class EventController : ControllerBase
     {
         private readonly IEventService _eventService;
+        private readonly ILogger _logger;
 
-        public EventController(IEventService eventService)
+        public EventController(IEventService eventService, ILogger logger)
         {
             _eventService = eventService;
+            _logger = logger;
         }
 
         [HttpGet]
         public IActionResult GetAll()
         {
             var result = _eventService.GetAll();
+
+            _logger.Information(JsonConvert.SerializeObject(result));
+
             return Ok(result);
         }
+
 
         [HttpPost]
         public IActionResult Create([FromBody] CreateEventDto req)
         {
             var result = _eventService.Create(req);
-            return Ok(result);
+
+            _logger.Information(JsonConvert.SerializeObject(result));
+
+            return result.IsSuccess
+                ? Ok(result)
+                : BadRequest(result);
+        }
+
+
+        [HttpDelete("{eventId}")]
+        public IActionResult Delete([FromRoute] Guid eventId)
+        {
+            var result = _eventService.Delete(eventId);
+
+            _logger.Information(JsonConvert.SerializeObject(result));
+
+            return result.IsSuccess
+                ? Ok(result)
+                : BadRequest(result);
+
         }
     }
 }

@@ -1,0 +1,5 @@
+/.vs
+/scheduler.api/obj
+/scheduler.api/bin
+/scheduler.core/obj
+/scheduler.core/bin

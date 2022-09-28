@@ -1,23 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace scheduler.core.Entities
 {
-    public class Event
+    public sealed class Event //: AuditableEntity
     {
-        public Guid Id { get; set; }
-        public DayOfWeek Day { get; set; }
-        public string Begin { get; set; } // fixear 00-24
-        public string End { get; set; } // fixear 00-24
+        public Event()
+        {
+            Students = new List<User>();
+        }
+
+        public Event(DayOfWeek day,
+                     string begin,
+                     string end,
+                     int maxCapacity,
+                     User instructor = null,
+                     string description = null)
+        {
+            Students = new List<User>();
+            Day = day;
+            Begin = begin;
+            End = end;
+            MaxCapacity = maxCapacity;
+            Instructor = instructor;
+            Description = description;
+        }
+
+        public Guid Id { get; private set; }
+        public DayOfWeek Day { get; private set; }
+        public string Begin { get; private set; } // fixear 00-24
+        public string End { get; private set; } // fixear 00-24
         //public string Duration { get => End - Begin; }
-        public int FreeSlots { get; set; }
-        public int MaxCapacity { get; set; }
-        public List<User> Students { get; set; }
-        public User Instructor { get; set; }
-        public string Description { get; set; }
+        public int FreeSlots { get => MaxCapacity - Students.Count; private set => value = MaxCapacity - Students.Count; }
+        public int MaxCapacity { get; private set; }
+        public List<User> Students { get; private set; }
+        public User Instructor { get; private set; }
+        public string Description { get; private set; }
     }
 
 }
