@@ -36,7 +36,7 @@ namespace scheduler.core.Entities
         public List<User> Students { get; private set; }
         public User Instructor { get; private set; }
         public string Description { get; private set; }
-        public int EventStatusId { get; private set; }
+        public int EventStatusId { get; set; }
 
         //public virtual EventStatus ProductStatus { get; set; }
     }

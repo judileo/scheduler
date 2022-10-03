@@ -10,10 +10,11 @@ namespace scheduler.core.Mappings
     {
         public static EventStatus FromDtoToEntity(CreateEventStatusDto dto)
         {
-            var entity = new EventStatus(
-                EventStatusName : dto.Name);
+            EventStatus eventStatus = new EventStatus();
 
-            return entity;
+            eventStatus.EventStatusName = dto.Name;
+
+            return eventStatus;
         }
 
         public static List<GetEventStatusDto> FromEntityToDtoList(List<EventStatus> entities)
@@ -21,7 +22,7 @@ namespace scheduler.core.Mappings
             var response = entities.Select(x => new GetEventStatusDto()
             {
                 Id = x.EventStatusId,
-                Name = x.EventStatusName,
+                Name = x.EventStatusName
             });
 
             return (List<GetEventStatusDto>)response;

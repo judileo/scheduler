@@ -11,12 +11,10 @@ namespace scheduler.core.Respositories
     public sealed class EventRepository : IEventRepository
     {
         private readonly DataContext _context;
-        private readonly Event _event;
 
-        public EventRepository(DataContext context, Event events)
+        public EventRepository(DataContext context)
         {
             _context = context;
-            _event = events;
         }
 
 
