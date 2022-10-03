@@ -1,5 +1,6 @@
 ﻿using scheduler.core.Data;
 using scheduler.core.Entities;
+using scheduler.core.Enums;
 using scheduler.core.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,12 @@ namespace scheduler.core.Respositories
     public sealed class EventRepository : IEventRepository
     {
         private readonly DataContext _context;
+        private readonly Event _event;
 
-        public EventRepository(DataContext context)
+        public EventRepository(DataContext context, Event events)
         {
             _context = context;
+            _event = events;
         }
 
 
@@ -40,6 +43,26 @@ namespace scheduler.core.Respositories
         {
             _context.Events.Remove(entity);
             _context.SaveChanges();
+        }
+
+        public bool ChangeStatus(Guid id)
+        {
+            var entity = _context.Events.Where(x => x.Id == id).FirstOrDefault();
+
+            if (entity != null)
+            {
+
+                entity.EventStatusId = (int)EventStatusEnum.Cancelled;
+
+                _context.Update(entity);
+                _context.SaveChanges();
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

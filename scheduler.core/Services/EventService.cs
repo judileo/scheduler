@@ -48,5 +48,19 @@ namespace scheduler.core.Services
             return Result.Success();
 
         }
+
+        public Result ChangeStatus(ChangeEventStatusDto dto)
+        {
+            var result = _eventRepository.ChangeStatus(dto.Id);
+
+            if (result)
+            {
+                return Result.Success();
+            }
+            else
+            {
+                return Result.Fail($"The product wasn´t found");
+            }
+        }
     }
 }

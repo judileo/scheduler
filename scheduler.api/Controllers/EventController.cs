@@ -56,5 +56,13 @@ namespace scheduler.api.Controllers
                 : BadRequest(result);
 
         }
+
+        [HttpPatch]
+        public ActionResult ChangeEventStatus([FromBody] ChangeEventStatusDto dto)
+        {
+            var result = _eventService.ChangeStatus(dto);
+
+            return Ok(result);
+        }
     }
 }
