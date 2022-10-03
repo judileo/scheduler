@@ -39,7 +39,7 @@ namespace scheduler.core.Respositories
             _context.SaveChanges();
         }
 
-        public bool Delete(int id)
+        public bool Delete(Guid id)
         {
             var entity = _context.EventStatus.Where(x => x.EventStatusId == id).FirstOrDefault();
 

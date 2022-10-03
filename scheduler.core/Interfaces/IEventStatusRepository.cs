@@ -1,4 +1,5 @@
 ﻿using scheduler.core.Entities;
+using System;
 using System.Collections.Generic;
 
 
@@ -9,6 +10,6 @@ namespace scheduler.core.Interfaces
         List<EventStatus> GetAll();
         //EventStatus GetById(int id);
         void Create(EventStatus entity);
-        bool Delete(int id);
+        bool Delete(Guid id);
     }
 }

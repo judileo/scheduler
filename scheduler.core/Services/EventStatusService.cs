@@ -38,7 +38,7 @@ namespace scheduler.core.Services
             return Result<string>.Success($"{entity.EventStatusName}");
         }
 
-        public Result Delete(int id)
+        public Result Delete(Guid id)
         {
             var result = _eventRepository.Delete(id);
 

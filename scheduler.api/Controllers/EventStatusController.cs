@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using scheduler.core.Dtos.Requests;
 using scheduler.core.Interfaces;
+using System;
 
 namespace scheduler.api.Controllers
 {
@@ -34,7 +35,7 @@ namespace scheduler.api.Controllers
         }
 
         [HttpDelete("{id}")]
-        public ActionResult Delete([FromRoute] int id)
+        public ActionResult Delete([FromRoute] Guid id)
         {
             var result = _service.Delete(id);
 

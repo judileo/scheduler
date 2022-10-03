@@ -13,6 +13,6 @@ namespace scheduler.core.Interfaces
     {
         List<GetEventStatusDto> GetAll();
         Result<string> Create(CreateEventStatusDto dto);
-        Result Delete(int id);
+        Result Delete(Guid id);
     }
 }
