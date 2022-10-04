@@ -1,5 +1,6 @@
 ﻿using scheduler.core.Data;
 using scheduler.core.Entities;
+using scheduler.core.Enums;
 using scheduler.core.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -40,6 +41,26 @@ namespace scheduler.core.Respositories
         {
             _context.Events.Remove(entity);
             _context.SaveChanges();
+        }
+
+        public bool ChangeStatus(Guid id)
+        {
+            var entity = _context.Events.Where(x => x.Id == id).FirstOrDefault();
+
+            if (entity != null)
+            {
+
+                entity.EventStatusId = (int)EventStatusEnum.Cancelled;
+
+                _context.Update(entity);
+                _context.SaveChanges();
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

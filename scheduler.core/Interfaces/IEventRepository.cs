@@ -8,8 +8,8 @@ namespace scheduler.core.Interfaces
     {
         List<Event> GetAll();
         Event GetById(Guid eventId);
-
         void Create(Event entity);
         void Delete(Event entity);
+        bool ChangeStatus(Guid dto);
     }
 }
