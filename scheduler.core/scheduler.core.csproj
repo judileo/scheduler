@@ -5,6 +5,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="12.0.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.17" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.17">
@@ -18,12 +19,13 @@
 		</PackageReference>
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="5.0.17" />
+		<PackageReference Include="Microsoft.Identity.Client" Version="4.47.1" />
+		<PackageReference Include="Npgsql" Version="6.0.7" />
 		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.10" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.23.1" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Dtos\Responses\" />
-	  <Folder Include="Mappings\" />
 	  <Folder Include="Validators\" />
 	</ItemGroup>
 

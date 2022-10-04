@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\July\\Downloads\\scheduler\\scheduler.api\\scheduler.api.csproj": {}
+    "C:\\Users\\Roxana\\Desktop\\Codigo Chido\\scheduler\\scheduler.api\\scheduler.api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\July\\Downloads\\scheduler\\scheduler.api\\scheduler.api.csproj": {
+    "C:\\Users\\Roxana\\Desktop\\Codigo Chido\\scheduler\\scheduler.api\\scheduler.api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\July\\Downloads\\scheduler\\scheduler.api\\scheduler.api.csproj",
+        "projectUniqueName": "C:\\Users\\Roxana\\Desktop\\Codigo Chido\\scheduler\\scheduler.api\\scheduler.api.csproj",
         "projectName": "scheduler.api",
-        "projectPath": "C:\\Users\\July\\Downloads\\scheduler\\scheduler.api\\scheduler.api.csproj",
-        "packagesPath": "C:\\Users\\July\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\July\\Downloads\\scheduler\\scheduler.api\\obj\\",
+        "projectPath": "C:\\Users\\Roxana\\Desktop\\Codigo Chido\\scheduler\\scheduler.api\\scheduler.api.csproj",
+        "packagesPath": "C:\\Users\\Roxana\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Roxana\\Desktop\\Codigo Chido\\scheduler\\scheduler.api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\July\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Roxana\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +28,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\July\\Downloads\\scheduler\\scheduler.core\\scheduler.core.csproj": {
-                "projectPath": "C:\\Users\\July\\Downloads\\scheduler\\scheduler.core\\scheduler.core.csproj"
+              "C:\\Users\\Roxana\\Desktop\\Codigo Chido\\scheduler\\scheduler.core\\scheduler.core.csproj": {
+                "projectPath": "C:\\Users\\Roxana\\Desktop\\Codigo Chido\\scheduler\\scheduler.core\\scheduler.core.csproj"
               }
             }
           }
@@ -103,21 +103,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\July\\Downloads\\scheduler\\scheduler.core\\scheduler.core.csproj": {
+    "C:\\Users\\Roxana\\Desktop\\Codigo Chido\\scheduler\\scheduler.core\\scheduler.core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\July\\Downloads\\scheduler\\scheduler.core\\scheduler.core.csproj",
+        "projectUniqueName": "C:\\Users\\Roxana\\Desktop\\Codigo Chido\\scheduler\\scheduler.core\\scheduler.core.csproj",
         "projectName": "scheduler.core",
-        "projectPath": "C:\\Users\\July\\Downloads\\scheduler\\scheduler.core\\scheduler.core.csproj",
-        "packagesPath": "C:\\Users\\July\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\July\\Downloads\\scheduler\\scheduler.core\\obj\\",
+        "projectPath": "C:\\Users\\Roxana\\Desktop\\Codigo Chido\\scheduler\\scheduler.core\\scheduler.core.csproj",
+        "packagesPath": "C:\\Users\\Roxana\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Roxana\\Desktop\\Codigo Chido\\scheduler\\scheduler.core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\July\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Roxana\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -143,6 +143,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            },
             "Microsoft.AspNetCore.Http.Abstractions": {
               "target": "Package",
               "version": "[2.2.0, )"
@@ -175,9 +179,21 @@
               "target": "Package",
               "version": "[5.0.17, )"
             },
+            "Microsoft.Identity.Client": {
+              "target": "Package",
+              "version": "[4.47.1, )"
+            },
+            "Npgsql": {
+              "target": "Package",
+              "version": "[6.0.7, )"
+            },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[5.0.10, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.23.1, )"
             }
           },
           "imports": [
@@ -195,7 +211,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
         }
       }
     }
