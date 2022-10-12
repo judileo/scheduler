@@ -41,6 +41,12 @@ namespace scheduler.core.Respositories
         {
             _context.Events.Remove(entity);
             _context.SaveChanges();
+            ///I choosed put it in repository because now is important data for us, no for the client or user.
+            ///I couldn't try this beacuse i can't connect to the database
+            foreach (var item in entity.Students)
+            {
+                Console.WriteLine(item.Email);
+            }
         }
 
         public bool ChangeStatus(Guid id)
