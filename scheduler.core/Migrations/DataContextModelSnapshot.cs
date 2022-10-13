@@ -43,8 +43,8 @@ namespace scheduler.core.Migrations
                     b.Property<int>("FreeSlots")
                         .HasColumnType("integer");
 
-                    b.Property<Guid?>("InstructorId")
-                        .HasColumnType("uuid");
+                    b.Property<string>("InstructorId")
+                        .HasColumnType("text");
 
                     b.Property<int>("MaxCapacity")
                         .HasColumnType("integer");
@@ -70,14 +70,54 @@ namespace scheduler.core.Migrations
                     b.ToTable("EventStatus");
                 });
 
+            modelBuilder.Entity("scheduler.core.Entities.Rol", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Roles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 100,
+                            Name = "Estudiante"
+                        },
+                        new
+                        {
+                            Id = 105,
+                            Name = "Profe"
+                        },
+                        new
+                        {
+                            Id = 70,
+                            Name = "Admin"
+                        });
+                });
+
             modelBuilder.Entity("scheduler.core.Entities.User", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                    b.Property<string>("Id")
+                        .HasColumnType("text");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .HasColumnType("text");
 
                     b.Property<string>("Email")
                         .HasColumnType("text");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("boolean");
 
                     b.Property<Guid?>("EventId")
                         .HasColumnType("uuid");
@@ -88,15 +128,47 @@ namespace scheduler.core.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("text");
 
-                    b.Property<string>("Rol")
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasColumnType("text");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("text");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("boolean");
+
+                    b.Property<int?>("RolId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("SecurityStamp")
                         .HasColumnType("text");
 
                     b.Property<string>("State")
                         .HasColumnType("text");
 
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("text");
+
                     b.HasKey("Id");
 
                     b.HasIndex("EventId");
+
+                    b.HasIndex("RolId");
 
                     b.ToTable("Users");
                 });
@@ -115,6 +187,12 @@ namespace scheduler.core.Migrations
                     b.HasOne("scheduler.core.Entities.Event", null)
                         .WithMany("Students")
                         .HasForeignKey("EventId");
+
+                    b.HasOne("scheduler.core.Entities.Rol", "Rol")
+                        .WithMany()
+                        .HasForeignKey("RolId");
+
+                    b.Navigation("Rol");
                 });
 
             modelBuilder.Entity("scheduler.core.Entities.Event", b =>

@@ -1,15 +1,20 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace scheduler.core.Entities
 {
-    public sealed class User
+    public class User : IdentityUser
     {
-        public Guid Id { get; set; }
+        [Key]
+        public override string Id { get; set; }
+
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Email { get; set; }
         public string State { get; set; } // pasar a enum (activo, inactivo, vacas)
-        public string Rol { get; set; } // pasar a enum (estudiante, profe, admin)
+
+        public int? RolId { get; set; }
+
+        public virtual Rol Rol { get; set; }
     }
 
 }

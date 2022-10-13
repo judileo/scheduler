@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace scheduler.core.Entities
 {
-    public sealed class Event //: AuditableEntity
+    public class Event //: AuditableEntity
     {
         public Event()
         {
@@ -33,11 +33,13 @@ namespace scheduler.core.Entities
         //public string Duration { get => End - Begin; }
         public int FreeSlots { get => MaxCapacity - Students.Count; private set => value = MaxCapacity - Students.Count; }
         public int MaxCapacity { get; private set; }
-        public List<User> Students { get; private set; }
-        public User Instructor { get; private set; }
         public string Description { get; private set; }
         public int EventStatusId { get; set; }
+        public string InstructorId { get; private set; }
 
+
+        public virtual List<User> Students { get; private set; }
+        public virtual User Instructor { get; private set; }
         //public virtual EventStatus ProductStatus { get; set; }
     }
 
