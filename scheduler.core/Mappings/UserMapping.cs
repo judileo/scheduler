@@ -22,8 +22,6 @@ namespace scheduler.core.Mappings
 
         public static IEnumerable<GetUserResponseDto> FromEntityToDtoList(List<User> entities)
         {
-            //var response = new List<GetEventDto>();
-
             var response = entities.Select(x => new GetUserResponseDto()
             {
                 Id = x.Id,

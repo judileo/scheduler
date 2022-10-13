@@ -51,6 +51,8 @@ namespace scheduler.core.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("EventStatusId");
+
                     b.HasIndex("InstructorId");
 
                     b.ToTable("Events");
@@ -58,9 +60,10 @@ namespace scheduler.core.Migrations
 
             modelBuilder.Entity("scheduler.core.Entities.EventStatus", b =>
                 {
-                    b.Property<Guid>("EventStatusId")
+                    b.Property<int>("EventStatusId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("EventStatusName")
                         .HasColumnType("text");
@@ -68,6 +71,23 @@ namespace scheduler.core.Migrations
                     b.HasKey("EventStatusId");
 
                     b.ToTable("EventStatus");
+
+                    b.HasData(
+                        new
+                        {
+                            EventStatusId = 200,
+                            EventStatusName = "Available"
+                        },
+                        new
+                        {
+                            EventStatusId = 400,
+                            EventStatusName = "Cancelled"
+                        },
+                        new
+                        {
+                            EventStatusId = 500,
+                            EventStatusName = "Deleted"
+                        });
                 });
 
             modelBuilder.Entity("scheduler.core.Entities.Rol", b =>
@@ -88,12 +108,12 @@ namespace scheduler.core.Migrations
                         new
                         {
                             Id = 100,
-                            Name = "Estudiante"
+                            Name = "Student"
                         },
                         new
                         {
                             Id = 105,
-                            Name = "Profe"
+                            Name = "Instructor"
                         },
                         new
                         {
@@ -175,9 +195,17 @@ namespace scheduler.core.Migrations
 
             modelBuilder.Entity("scheduler.core.Entities.Event", b =>
                 {
+                    b.HasOne("scheduler.core.Entities.EventStatus", "EventStatus")
+                        .WithMany()
+                        .HasForeignKey("EventStatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("scheduler.core.Entities.User", "Instructor")
                         .WithMany()
                         .HasForeignKey("InstructorId");
+
+                    b.Navigation("EventStatus");
 
                     b.Navigation("Instructor");
                 });

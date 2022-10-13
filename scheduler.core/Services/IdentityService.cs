@@ -5,6 +5,7 @@ using scheduler.core.Auth;
 using scheduler.core.Dtos.Requests;
 using scheduler.core.Dtos.Responses;
 using scheduler.core.Entities;
+using scheduler.core.Enums;
 using scheduler.core.Interfaces;
 using scheduler.core.Mappings;
 using System;
@@ -32,6 +33,7 @@ namespace scheduler.core.Services
             _repository = repository;
         }
 
+
         public List<GetUserResponseDto> GetAll()
         {
             var result = _repository.GetAll();
@@ -40,6 +42,7 @@ namespace scheduler.core.Services
 
             return response.ToList();
         }
+
 
         public async Task<AuthenticationResult> LoginAsync(UserLoginDto dto)
         {
@@ -57,10 +60,6 @@ namespace scheduler.core.Services
 
         public async Task<AuthenticationResult> RegisterAsync(UserRegisterDto dto)
         {
-            var pepe = new Random().Next(1, 1000);
-            dto.Email = $"claudio.dpedalino{pepe}@gmail.com";
-            dto.Password = "Temporal1#";
-
             var existingUser = await _userManager.FindByEmailAsync(dto.Email);
             if (existingUser != null)
                 return ValidateUserException(AuthValidationErrorResponses.UserAlreadyExist);
@@ -69,7 +68,11 @@ namespace scheduler.core.Services
             {
                 Email = dto.Email,
                 UserName = dto.Email,
-                RolId = 100
+                //RolId = (int?)UserRolEnum.Student, // TODO: Modificar para que permita crear un usuario con otro rol ((validar que el rol exista antes)) )
+                RolId = dto.RolId,
+                FirstName = dto.FirstName,
+                LastName = dto.LastName,
+                State = "Active", // Luego podemos agregar lógica para manejar estados de un usuario
             };
 
             var createdUser = await _userManager.CreateAsync(newUser, dto.Password);
@@ -82,48 +85,37 @@ namespace scheduler.core.Services
                 };
             }
 
-
             return GenerateAuthResult(newUser);
         }
 
 
 
-        private AuthenticationResult GenerateAuthResult(IdentityUser newUser)
+        private AuthenticationResult GenerateAuthResult(IdentityUser newUser) // TODO: Esto se puede llevar a un servicio aparte para que la clase quede más chica
         {
-            try
-            {
-                var tokenHandler = new JwtSecurityTokenHandler();
-                var key = Encoding.ASCII.GetBytes(_jwtSettings.Secret);
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(_jwtSettings.Secret);
 
-                var tokenDescriptor = new SecurityTokenDescriptor
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new[]
                 {
-                    Subject = new ClaimsIdentity(new[]
-                    {
                     new Claim(JwtRegisteredClaimNames.Sub, newUser.Email),
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                     new Claim(JwtRegisteredClaimNames.AuthTime, DateTime.UtcNow.ToString("d")),
                     new Claim(JwtRegisteredClaimNames.Email, newUser.Email),
-                    //new Claim("id", newUser.Id)
                 }),
-                    Expires = DateTime.UtcNow.AddHours(4),
-                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
-                                                                SecurityAlgorithms.HmacSha256Signature)
-                };
+                Expires = DateTime.UtcNow.AddHours(4),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
+                                                            SecurityAlgorithms.HmacSha256Signature)
+            };
 
-                var token = tokenHandler.CreateToken(tokenDescriptor);
+            var token = tokenHandler.CreateToken(tokenDescriptor);
 
-                return new AuthenticationResult
-                {
-                    Success = true,
-                    Token = tokenHandler.WriteToken(token)
-                };
-            }
-            catch (Exception ex)
+            return new AuthenticationResult
             {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.InnerException.Message);
-                return default;
-            }
+                Success = true,
+                Token = tokenHandler.WriteToken(token)
+            };
         }
 
         private AuthenticationResult ValidateUserException(string validationMessage)
@@ -133,10 +125,5 @@ namespace scheduler.core.Services
             };
     }
 
-    public static class AuthValidationErrorResponses
-    {
-        public const string UserAlreadyExist = "User with this email address already exists";
-        public const string UserOrPasswordAreIncorrect = "User or passwords are incorrect";
-        public const string UserDoesNotExist = "User or passwords are incorrect";
-    }
+
 }

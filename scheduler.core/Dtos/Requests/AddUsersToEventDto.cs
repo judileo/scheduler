@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace scheduler.core.Dtos.Requests
 {
-    public class CreateEventStatusDto
+    public class AddUsersToEventDto
     {
-        public string Name { get; set; }
+        public List<string> Users { get; set; }
+        public Guid EventId { get; set; }
     }
 }

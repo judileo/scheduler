@@ -17,6 +17,7 @@ namespace scheduler.api.Controllers
             _identityService = identityService;
         }
 
+
         [HttpGet]
         public ActionResult GetAll()
         {

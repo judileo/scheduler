@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace scheduler.core.Dtos.Requests
 {
-    public class ChangeEventStatusDto
+    public class CancelEventDto
     {
         public Guid Id { get; set; }
     }

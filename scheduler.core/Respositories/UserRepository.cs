@@ -1,4 +1,5 @@
-﻿using scheduler.core.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using scheduler.core.Data;
 using scheduler.core.Entities;
 using scheduler.core.Interfaces;
 using System;

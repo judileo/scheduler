@@ -44,6 +44,16 @@ namespace scheduler.api.Controllers
         }
 
 
+        [HttpPost("add-users-to-event")]
+        public IActionResult AddUsersToEvent([FromBody] AddUsersToEventDto req)
+        {
+            // TODO: Asociar la lista de usuarios recibidos al evento especificado
+            // Validar que los usuarios y el evento existan
+
+            return default;
+        }
+
+
         [HttpDelete("{eventId}")]
         public IActionResult Delete([FromRoute] Guid eventId)
         {
@@ -57,10 +67,10 @@ namespace scheduler.api.Controllers
 
         }
 
-        [HttpPatch]
-        public ActionResult ChangeEventStatus([FromBody] ChangeEventStatusDto dto)
+        [HttpPut("cancel-event")]
+        public ActionResult CancelEventStatus([FromBody] CancelEventDto dto)
         {
-            var result = _eventService.ChangeStatus(dto);
+            var result = _eventService.CancelEvent(dto);
 
             return Ok(result);
         }

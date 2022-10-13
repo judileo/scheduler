@@ -11,6 +11,6 @@ namespace scheduler.core.Interfaces
         IEnumerable<GetEventDto> GetAll();
         Result Create(CreateEventDto req);
         Result Delete(Guid eventId);
-        Result ChangeStatus(ChangeEventStatusDto dto);
+        Result CancelEvent(CancelEventDto dto);
     }
 }

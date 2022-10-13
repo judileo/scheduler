@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace scheduler.core.Migrations
 {
-    public partial class init123 : Migration
+    public partial class pepe : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,7 +12,8 @@ namespace scheduler.core.Migrations
                 name: "EventStatus",
                 columns: table => new
                 {
-                    EventStatusId = table.Column<Guid>(type: "uuid", nullable: false),
+                    EventStatusId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     EventStatusName = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
@@ -87,6 +88,12 @@ namespace scheduler.core.Migrations
                 {
                     table.PrimaryKey("PK_Events", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_Events_EventStatus_EventStatusId",
+                        column: x => x.EventStatusId,
+                        principalTable: "EventStatus",
+                        principalColumn: "EventStatusId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_Events_Users_InstructorId",
                         column: x => x.InstructorId,
                         principalTable: "Users",
@@ -95,14 +102,29 @@ namespace scheduler.core.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "EventStatus",
+                columns: new[] { "EventStatusId", "EventStatusName" },
+                values: new object[,]
+                {
+                    { 200, "Available" },
+                    { 400, "Cancelled" },
+                    { 500, "Deleted" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Roles",
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
-                    { 100, "Estudiante" },
-                    { 105, "Profe" },
+                    { 100, "Student" },
+                    { 105, "Instructor" },
                     { 70, "Admin" }
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Events_EventStatusId",
+                table: "Events",
+                column: "EventStatusId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Events_InstructorId",
@@ -130,6 +152,10 @@ namespace scheduler.core.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Events_EventStatus_EventStatusId",
+                table: "Events");
+
             migrationBuilder.DropForeignKey(
                 name: "FK_Events_Users_InstructorId",
                 table: "Events");

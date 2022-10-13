@@ -27,6 +27,7 @@ namespace scheduler.core.Services
             return response;
         }
 
+
         public Result Create(CreateEventDto req)
         {
             var entity = EventMapping.FromDtoToEntity(req);
@@ -36,7 +37,8 @@ namespace scheduler.core.Services
             return Result.Success();
         }
 
-        public Result Delete(Guid eventId)
+
+        public Result Delete(Guid eventId) // TODO: Luego esto solo lo va a poder ejecutar un usuario admin solo si el curso ya está en estado 'cancelado' 
         {
             var entityToDelete = _eventRepository.GetById(eventId);
 
@@ -49,7 +51,8 @@ namespace scheduler.core.Services
 
         }
 
-        public Result ChangeStatus(ChangeEventStatusDto dto)
+
+        public Result CancelEvent(CancelEventDto dto) // TODO: Esto lo puede ejecutar un usuario 'Admin' y 'Profe'
         {
             var result = _eventRepository.ChangeStatus(dto.Id);
 

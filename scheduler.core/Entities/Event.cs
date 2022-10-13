@@ -14,6 +14,7 @@ namespace scheduler.core.Entities
                      string begin,
                      string end,
                      int maxCapacity,
+                     int eventStatusId,
                      User instructor = null,
                      string description = null)
         {
@@ -22,6 +23,7 @@ namespace scheduler.core.Entities
             Begin = begin;
             End = end;
             MaxCapacity = maxCapacity;
+            EventStatusId = eventStatusId;
             Instructor = instructor;
             Description = description;
         }
@@ -40,7 +42,7 @@ namespace scheduler.core.Entities
 
         public virtual List<User> Students { get; private set; }
         public virtual User Instructor { get; private set; }
-        //public virtual EventStatus ProductStatus { get; set; }
+        public virtual EventStatus EventStatus { get; private set; }
     }
 
 }

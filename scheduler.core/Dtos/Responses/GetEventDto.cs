@@ -15,6 +15,7 @@ namespace scheduler.core.Dtos.Responses
         public string End { get; set; }
         public int FreeSlots { get => MaxCapacity - Students.Count; private set => value = MaxCapacity - Students.Count; }
         public int MaxCapacity { get; set; }
+        public int EventStatusId { get; set; }
         public List<User> Students { get; set; }
         public User Instructor { get; set; }
         public string Description { get; set; }

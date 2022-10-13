@@ -1,6 +1,7 @@
 ﻿using scheduler.core.Dtos.Requests;
 using scheduler.core.Dtos.Responses;
 using scheduler.core.Entities;
+using scheduler.core.Enums;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -14,8 +15,11 @@ namespace scheduler.core.Mappings
                 day: dto.Day,
                 begin: dto.Begin,
                 end: dto.End,
+                eventStatusId: dto.EventStatusId != default
+                                ? dto.EventStatusId
+                                : (int)EventStatusEnum.Available,
                 maxCapacity: dto.MaxCapacity,
-                instructor: null,
+                instructor: null, // TODO: Luego mapear este dato, actualmente no lo asocia nunca
                 description: dto.Description);
 
             return entity;
@@ -23,8 +27,6 @@ namespace scheduler.core.Mappings
 
         public static IEnumerable<GetEventDto> FromEntityToDtoList(List<Event> entities)
         {
-            //var response = new List<GetEventDto>();
-
             var response = entities.Select(x => new GetEventDto()
             {
                 Id = x.Id,
@@ -32,6 +34,7 @@ namespace scheduler.core.Mappings
                 Begin = x.Begin,
                 End = x.End,
                 MaxCapacity = x.MaxCapacity,
+                EventStatusId = x.EventStatusId,
                 Instructor = x.Instructor,
                 Students = x.Students,
                 Description = x.Description,
