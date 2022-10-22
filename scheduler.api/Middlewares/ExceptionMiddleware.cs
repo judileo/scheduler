@@ -27,13 +27,17 @@ namespace scheduler.api.Middlewares
             }
             catch (Exception ex)
             {
+
+                _logger.Error($"[Error]: {ex.Message}");
+
+                httpContext.Response.ContentType = "application/json";
+                httpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+
                 await httpContext.Response.WriteAsync(JsonSerializer.Serialize(new ProblemDetails
                 {
+                    Status = httpContext.Response.StatusCode,
                     Title = $"Oops! Something went wrong, please try again. The error status code is {httpContext.Response.StatusCode}"
                 }));
-
-                Console.WriteLine(ex.Message + ex.HelpLink);
-
 
             }
         }
