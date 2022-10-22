@@ -4,6 +4,7 @@ using scheduler.core.Dtos.Requests;
 using scheduler.core.Interfaces;
 using Serilog;
 using System;
+using System.Threading.Tasks;
 
 namespace scheduler.api.Controllers
 {
@@ -21,9 +22,9 @@ namespace scheduler.api.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAllAsync()
         {
-            var result = _eventService.GetAll();
+            var result = await _eventService.GetAllAsync();
 
             _logger.Information(JsonConvert.SerializeObject(result));
 
@@ -32,9 +33,9 @@ namespace scheduler.api.Controllers
 
 
         [HttpPost]
-        public IActionResult Create([FromBody] CreateEventDto req)
+        public async Task<IActionResult> CreateAsync([FromBody] CreateEventDto req)
         {
-            var result = _eventService.Create(req);
+            var result = await _eventService.CreateAsync(req);
 
             _logger.Information(JsonConvert.SerializeObject(result));
 
@@ -55,9 +56,9 @@ namespace scheduler.api.Controllers
 
 
         [HttpDelete("{eventId}")]
-        public IActionResult Delete([FromRoute] Guid eventId)
+        public async Task<IActionResult> DeleteAsync([FromRoute] Guid eventId)
         {
-            var result = _eventService.Delete(eventId);
+            var result = await _eventService.DeleteAsync(eventId);
 
             _logger.Information(JsonConvert.SerializeObject(result));
 
@@ -68,9 +69,9 @@ namespace scheduler.api.Controllers
         }
 
         [HttpPut("cancel-event")]
-        public ActionResult CancelEventStatus([FromBody] CancelEventDto dto)
+        public async Task<ActionResult> CancelEventStatusAsync([FromBody] CancelEventDto dto)
         {
-            var result = _eventService.CancelEvent(dto);
+            var result = await _eventService.CancelEventAsync(dto);
 
             return Ok(result);
         }

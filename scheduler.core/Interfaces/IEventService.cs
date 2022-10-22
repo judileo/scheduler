@@ -3,14 +3,15 @@ using scheduler.core.Dtos.Responses;
 using scheduler.core.Wrappers;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace scheduler.core.Interfaces
 {
     public interface IEventService
     {
-        IEnumerable<GetEventDto> GetAll();
-        Result Create(CreateEventDto req);
-        Result Delete(Guid eventId);
-        Result CancelEvent(CancelEventDto dto);
+        Task<IEnumerable<GetEventDto>> GetAllAsync();
+        Task<Result> CreateAsync(CreateEventDto req);
+        Task<Result> DeleteAsync(Guid eventId);
+        Task<Result> CancelEventAsync(CancelEventDto dto);
     }
 }

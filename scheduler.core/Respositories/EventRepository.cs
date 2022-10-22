@@ -1,10 +1,12 @@
-﻿using scheduler.core.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using scheduler.core.Data;
 using scheduler.core.Entities;
 using scheduler.core.Enums;
 using scheduler.core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace scheduler.core.Respositories
 {
@@ -18,22 +20,22 @@ namespace scheduler.core.Respositories
         }
 
 
-        public List<Event> GetAll()
+        public async Task<List<Event>> GetAllAsync()
         {
-            var result = _context.Events.ToList();
+            var result = await _context.Events.ToListAsync();
 
             return result;
         }
 
-        public void Create(Event entity)
+        public async Task CreateAsync(Event entity)
         {
-            _context.Events.Add(entity);
+            await _context.Events.AddAsync(entity);
             _context.SaveChanges();
         }
 
-        public Event GetById(Guid eventId)
+        public async Task<Event> GetByIdAsync(Guid eventId)
         {
-            var result = _context.Events.FirstOrDefault(x => x.Id == eventId);
+            var result = await _context.Events.FirstOrDefaultAsync(x => x.Id == eventId);
             return result;
         }
 
@@ -43,9 +45,9 @@ namespace scheduler.core.Respositories
             _context.SaveChanges();
         }
 
-        public bool ChangeStatus(Guid id)
+        public async Task<bool> ChangeStatusAsync(Guid id)
         {
-            var entity = _context.Events.Where(x => x.Id == id).FirstOrDefault();
+            var entity = await _context.Events.Where(x => x.Id == id).FirstOrDefaultAsync();
 
             if (entity != null)
             {
