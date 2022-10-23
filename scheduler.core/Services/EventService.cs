@@ -5,6 +5,7 @@ using scheduler.core.Mappings;
 using scheduler.core.Wrappers;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace scheduler.core.Services
 {
@@ -18,9 +19,9 @@ namespace scheduler.core.Services
         }
 
 
-        public IEnumerable<GetEventDto> GetAll()
+        public async Task<IEnumerable<GetEventDto>> GetAllAsync()
         {
-            var result = _eventRepository.GetAll();
+            var result = await _eventRepository.GetAllAsync();
 
             var response = EventMapping.FromEntityToDtoList(result);
 
@@ -28,19 +29,19 @@ namespace scheduler.core.Services
         }
 
 
-        public Result Create(CreateEventDto req)
+        public async Task<Result> CreateAsync(CreateEventDto req)
         {
             var entity = EventMapping.FromDtoToEntity(req);
 
-            _eventRepository.Create(entity);
+            await _eventRepository.CreateAsync(entity);
 
             return Result.Success();
         }
 
 
-        public Result Delete(Guid eventId) // TODO: Luego esto solo lo va a poder ejecutar un usuario admin solo si el curso ya está en estado 'cancelado' 
+        public async Task<Result> DeleteAsync(Guid eventId) // TODO: Luego esto solo lo va a poder ejecutar un usuario admin solo si el curso ya está en estado 'cancelado' 
         {
-            var entityToDelete = _eventRepository.GetById(eventId);
+            var entityToDelete =  await _eventRepository.GetByIdAsync(eventId);
 
             if (entityToDelete is null)
                 return Result.NotFound();
@@ -52,9 +53,9 @@ namespace scheduler.core.Services
         }
 
 
-        public Result CancelEvent(CancelEventDto dto) // TODO: Esto lo puede ejecutar un usuario 'Admin' y 'Profe'
+        public async Task<Result> CancelEventAsync(CancelEventDto dto) // TODO: Esto lo puede ejecutar un usuario 'Admin' y 'Profe'
         {
-            var result = _eventRepository.ChangeStatus(dto.Id);
+            var result =  await _eventRepository.ChangeStatusAsync(dto.Id);
 
             if (result)
             {
