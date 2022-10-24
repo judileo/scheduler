@@ -27,6 +27,7 @@ namespace scheduler.core.Mappings
                 Id = x.Id,
                 Apellido = x.LastName,
                 Nombre = x.FirstName,
+                Rol = x.Rol.Name,
             });
 
             return response;

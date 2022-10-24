@@ -19,7 +19,7 @@ namespace scheduler.core.Respositories
 
         public List<User> GetAll()
         {
-            return _context.Users.ToList();
+            return _context.Users.Include(x => x.Rol).ToList();
         }
     }
 }
